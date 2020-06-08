@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  binance-scraper:
+    build:
+      context: ./binance-scraper
+    environment:
+      PG_HOST: 127.0.0.1
+      PG_PORT: 5432
+      PG_NAME: postgres
+      PG_USER: postgres
+      PG_PASS: docker
+    restart: on-failure
