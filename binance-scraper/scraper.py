@@ -18,7 +18,7 @@ def build_tables(symbol):
     sql_value = f"""
     CREATE TABLE IF NOT EXISTS {table_name_value} (
         id bigserial    PRIMARY KEY,
-        timestamp       timestamp NOT NULL,
+        timestamp       bigint NOT NULL,
         high            numeric(16),
         low             numeric(16),
         bid             numeric(16),
@@ -39,7 +39,7 @@ def build_tables(symbol):
     sql_info = f"""
         CREATE TABLE IF NOT EXISTS {table_name_info} (
             id bigserial        PRIMARY KEY,
-            timestamp           timestamp NOT NULL,
+            timestamp           bigint NOT NULL,
             priceChange         numeric(16),
             priceChangePercent  numeric(16),
             weightedAvgPrice    numeric(16),
@@ -87,7 +87,7 @@ def build_insert_ticker(symbol, ticker, ticker_info):
             baseVolume,
             quoteVolume
         ) values (
-            to_timestamp({ticker['timestamp']}),
+            {ticker['timestamp']},
             {ticker['high']},
             {ticker['low']},
             {ticker['bid']},
@@ -129,7 +129,7 @@ def build_insert_ticker(symbol, ticker, ticker_info):
             lastId,
             count
         ) VALUES (
-            to_timestamp({ticker['timestamp']}),
+            {ticker['timestamp']},
             {ticker_info['priceChange']},
             {ticker_info['priceChangePercent']},
             {ticker_info['weightedAvgPrice']},
