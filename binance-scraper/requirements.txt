@@ -1,7 +1,7 @@
 aiodns==1.1.1
 aiohttp==3.6.2
 async-timeout==3.0.1
-asyncpg==0.20.1
+asyncpg==0.21.0
 attrs==19.3.0
 ccxt==1.29.51
 certifi==2020.4.5.2
